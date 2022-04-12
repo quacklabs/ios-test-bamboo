@@ -23,7 +23,7 @@ class Request: NetworkService {
         let headers = self.buildHeaders(encoding: request.encoding)
         return Observable.create({ observer -> Disposable in
             if let url = request.endpoint.url {
-
+                
                 self.session.request(url, method: request.method, parameters: request.body, encoding: request.encoding.get, headers: headers).response { response in
                     self.parseResponse(response) { (status, _ result: T?) in
                         switch status {
@@ -107,12 +107,16 @@ class Request: NetworkService {
                 
                 do {
                     let obj = try JSONSerialization.jsonObject(with: jsonData, options: [.fragmentsAllowed, .allowFragments])
+                    print("obj: \(obj)")
                     let data = try JSONSerialization.data(withJSONObject: obj, options: [.fragmentsAllowed, .prettyPrinted])
-                    if let serialized = try? JSONDecoder().decode(T.self, from: data) {
+                    do {
+                        let serialized = try JSONDecoder().decode(T.self, from: data)
                         completion(.success, serialized)
-                    } else {
+                    }catch {
+                        print("error again: \(error)")
                         completion(.success, nil)
                     }
+                    
                 } catch {
                     print("error: \(error)")
                 }
@@ -138,6 +142,7 @@ class Request: NetworkService {
             }
             completion(.failed(.unknown(resp.message)), nil)
         default:
+            print("response: \(response.response)")
             session.cancelAllRequests()
             completion(.failed(.unknown("Your internet connection appears to be offline")), nil)
         }

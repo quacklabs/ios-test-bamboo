@@ -86,26 +86,17 @@ class HomeViewController: UIViewController {
     }
     
     private func showAlert(message: String) {
-        print("e suppose show alert")
-        // show alert and enable button for reuse
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
-            alert.dismiss(animated: true, completion: {
-                DispatchQueue.main.async {
-                    self.searchButton.isEnabled = true
-                }
-            })
+            alert.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
     }
     
     private func showWeather(searchType: SearchType) {
-        let controller = WeatherDetailController(viewModel: self.viewModel)
-        controller.searchType = searchType
-        
-        self.navigationController?.present(controller, animated:true, completion: nil)
+        let controller = WeatherDetailController(viewModel: self.viewModel, type: searchType)
+        self.navigationController?.pushViewController(controller, animated: false)
     }
 }
 

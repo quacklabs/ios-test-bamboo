@@ -35,9 +35,13 @@ class WeatherViewModel {
     
     let disposeBag = DisposeBag()
     
-    var service: Network!
+    private let service: Network!
     
     var weather = PublishSubject<Forecast>()
+    
+    init() {
+        self.service = Network.shared
+    }
     
     func dataSource() -> RxTableViewSectionedReloadDataSource<MultipleSectionModel> {
         return RxTableViewSectionedReloadDataSource<MultipleSectionModel>(
@@ -85,8 +89,29 @@ class WeatherViewModel {
     }
     
     
-    func search(type: SearchType) {
-//        switch type
+    func search(type: SearchType, unit: Unit? = .celcius, data: [String:String]) {
+        let request: NetworkRequest!
+        switch type {
+        case .city:
+            request = NetworkRequest(endpoint: API_Client.weather(.getForecastByCity(city: data["city"]!, unit: unit!)), method: .get, encoding: .urlJson, body: [:])
+        case .coordinate:
+            request = NetworkRequest(endpoint: API_Client.weather(.getForecastByCoordinate(lat: data["lat"]!, lon: data["lon"]!, unit: unit!)), method: .get, encoding: .urlJson, body: [:])
+        }
+        
+        self.service.fetch(request!)
+            .subscribe(onNext: { (_ response: NetworkResponse, _ forecast: Forecast?) in
+                guard forecast != nil else {
+                    return
+                }
+                
+                self.weather.onNext(forecast!)
+            },
+            onError: { (error) in
+                self.weather.onError(error)
+            },
+            onCompleted: {
+                self.weather.onCompleted()
+            }).disposed(by: disposeBag)
     }
 }
 

@@ -9,6 +9,7 @@
 import Foundation
 
 
-struct City: Codable {
+struct Prediction: Codable {
     var name: String
+    var value: String
 }

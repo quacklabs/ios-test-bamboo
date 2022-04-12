@@ -9,6 +9,24 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>iOS-Test-BambooTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>DEEF91E02803FAA600DE925D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DEEF91F62803FAAF00DE925D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

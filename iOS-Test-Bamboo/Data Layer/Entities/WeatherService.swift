@@ -11,7 +11,8 @@ import Alamofire
 
 enum WeatherService: Microservice {
     
-    case getForcast(lat: String, lon: String)
+    case getForecastByCoordinate(lat: String, lon: String, unit: Unit?)
+    case getForecastByCity(city: String, unit: Unit?)
     case getIcon(code: String)
     
     var url: URL? {
@@ -23,10 +24,12 @@ enum WeatherService: Microservice {
     
     var stringValue: String {
         switch self {
-        case .getForcast(let latitude, let longitude):
-            return API_Client.base_url + "?lat=\(latitude)&lon=\(longitude)&appid=\(API_Client.appid)"
+        case .getForecastByCoordinate(let latitude, let longitude, let unit):
+            return API_Client.base_url + "?lat=\(latitude)&lon=\(longitude)&units=\((unit != nil) ? unit!.unit : "metric")&appid=\(API_Client.appid)"
+        case .getForecastByCity(let city, let unit):
+            return API_Client.base_url + "?q=\(city)&units=\((unit != nil) ? unit!.unit : "metric")&appid=\(API_Client.appid)"
         case .getIcon(let code):
-            return "http://openweathermap.org/img/wn/\(code)@2x.png"
+            return "https://openweathermap.org/img/wn/\(code)@2x.png"
         }
     }
     

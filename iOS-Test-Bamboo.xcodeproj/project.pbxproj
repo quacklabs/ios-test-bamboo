@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		56BBE3190D526C6C108A4020 /* Pods_iOS_Test_Bamboo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533B652883EF125F383F8865 /* Pods_iOS_Test_Bamboo.framework */; };
 		6F8E7C1BA45E93214B5EF87B /* Pods_iOS_Test_BambooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9FD00F3659A27B190BE8DBC /* Pods_iOS_Test_BambooTests.framework */; };
+		DE51709C28054B2400BC3A82 /* WeatherDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51709B28054B2300BC3A82 /* WeatherDetails.swift */; };
+		DE51709E2805694C00BC3A82 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51709D2805694B00BC3A82 /* LoadingOverlay.swift */; };
 		DE66F94528045A8300484F15 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE66F94428045A8300484F15 /* UIColor+Extension.swift */; };
 		DE66F94728045AA500484F15 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE66F94628045AA500484F15 /* String+Extension.swift */; };
 		DE66F949280472DA00484F15 /* SearchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE66F948280472DA00484F15 /* SearchLocationCell.swift */; };
@@ -50,6 +52,8 @@
 		598A76A99FC27A5B74978720 /* Pods-iOS-Test-BambooTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Test-BambooTests.release.xcconfig"; path = "Target Support Files/Pods-iOS-Test-BambooTests/Pods-iOS-Test-BambooTests.release.xcconfig"; sourceTree = "<group>"; };
 		A3680792172C7C0A32A6418D /* Pods-iOS-Test-Bamboo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Test-Bamboo.release.xcconfig"; path = "Target Support Files/Pods-iOS-Test-Bamboo/Pods-iOS-Test-Bamboo.release.xcconfig"; sourceTree = "<group>"; };
 		B9FD00F3659A27B190BE8DBC /* Pods_iOS_Test_BambooTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Test_BambooTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE51709B28054B2300BC3A82 /* WeatherDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetails.swift; sourceTree = "<group>"; };
+		DE51709D2805694B00BC3A82 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		DE66F94428045A8300484F15 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DE66F94628045AA500484F15 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DE66F948280472DA00484F15 /* SearchLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCell.swift; sourceTree = "<group>"; };
@@ -182,7 +186,7 @@
 		DEEF92082803FC8800DE925D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DEEF92132804042500DE925D /* Shared Views */,
+				DEEF92132804042500DE925D /* CustomViews */,
 				DEEF92122804040E00DE925D /* Home */,
 			);
 			path = Views;
@@ -244,13 +248,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		DEEF92132804042500DE925D /* Shared Views */ = {
+		DEEF92132804042500DE925D /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				DE51709D2805694B00BC3A82 /* LoadingOverlay.swift */,
 				DEEF92142804043F00DE925D /* SelectCityTableCell.swift */,
 				DE66F948280472DA00484F15 /* SearchLocationCell.swift */,
+				DE51709B28054B2300BC3A82 /* WeatherDetails.swift */,
 			);
-			path = "Shared Views";
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		DEEF921E2804472900DE925D /* Entities */ = {
@@ -450,8 +456,10 @@
 				DEEF92152804043F00DE925D /* SelectCityTableCell.swift in Sources */,
 				DE66F949280472DA00484F15 /* SearchLocationCell.swift in Sources */,
 				DEEF922528044C8E00DE925D /* Response.swift in Sources */,
+				DE51709E2805694C00BC3A82 /* LoadingOverlay.swift in Sources */,
 				DEEF920E2803FD0600DE925D /* UIViewController+Extension.swift in Sources */,
 				DEEF921D2804461600DE925D /* Network.swift in Sources */,
+				DE51709C28054B2400BC3A82 /* WeatherDetails.swift in Sources */,
 				DE66F94528045A8300484F15 /* UIColor+Extension.swift in Sources */,
 				DEEF92192804458400DE925D /* Request.swift in Sources */,
 				DEEF91E52803FAA600DE925D /* AppDelegate.swift in Sources */,
