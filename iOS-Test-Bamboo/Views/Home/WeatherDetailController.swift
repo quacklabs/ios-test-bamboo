@@ -58,6 +58,7 @@ class WeatherDetailController: UIViewController {
     lazy var temperature: UILabel = {
         let txt = UILabel()
         txt.textAlignment = .center
+        txt.font = UIFont.systemFont(ofSize: 45).bold
         txt.text = "---"
         txt.translatesAutoresizingMaskIntoConstraints = false
         return txt
